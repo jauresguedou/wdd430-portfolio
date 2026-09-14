@@ -4,9 +4,10 @@ import { getProjectById } from '@/app/projects/lib/projects-db';
 
 export async function GET(
   _request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const id = Number(params.id);
+  const { id: idParam} = await params;
+  const id = Number(idParam);
   if (Number.isNaN(id)) {
     return NextResponse.json({ error: 'Invalid id' }, { status: 400 });
   }
