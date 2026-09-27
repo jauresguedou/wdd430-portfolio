@@ -7,7 +7,7 @@ import bcrypt from 'bcryptjs';
 import { authConfig } from './auth.config';
 import { getUserByEmail } from '@/lib/data';
 
-export const { auth, signIn, signOut } = NextAuth({
+export const { auth, handlers, signIn, signOut } = NextAuth({
     ...authConfig,
     providers: [
         Credentials({
