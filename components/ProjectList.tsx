@@ -1,17 +1,15 @@
 import ProjectCard from './ProjectCard';
-
-interface Project {
-  title: string;
-  description: string;
-  technologies: string[];
-  link?: string;
-}
+import { fetchFilteredProjects } from '@/app/projects/lib/projects-db';
 
 interface ProjectListProps {
-  projects: Project[];
+  type?: 'opensource' | 'school';
+  query?: string;
+  page?: number;
 }
 
-export default function ProjectList({ projects }: ProjectListProps) {
+export default async function ProjectList({ type, query, page }: ProjectListProps) {
+  const projects = await fetchFilteredProjects(query ?? '', page ?? 1, type);
+
   return (
     <section className="grid gap-4 md:grid-cols-2">
       {projects.map((project) => (

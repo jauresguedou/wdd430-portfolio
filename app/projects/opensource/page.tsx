@@ -1,4 +1,4 @@
-import ApiProjectList from '@/components/ApiProjectList';
+import ProjectList from '@/components/ProjectList';
 
 export default function OpenSource() {
     return (
@@ -6,7 +6,7 @@ export default function OpenSource() {
             <h1 className="mb-8 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 Open Source Projects.
             </h1>
-            <ApiProjectList type="opensource" />
+            <ProjectList type="opensource" />
         </main>
     );
 }

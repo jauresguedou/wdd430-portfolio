@@ -1,4 +1,7 @@
+import { deleteProject } from '@/lib/actions';
+
 interface ProjectCardProps {
+    id: number;
     title: string;
     description: string;
     technologies: string[];
@@ -6,7 +9,7 @@ interface ProjectCardProps {
 }
 
 
-export default function ProjectCard({ title, description, technologies, link }: ProjectCardProps) {
+export default function ProjectCard({ id, title, description, technologies, link }: ProjectCardProps) {
     return (
         <article className="p-4 border-1-4 border-blue-600 bg-gray-50 rounded">
             <h3 className="text-xl font-bold mb-2">{title}</h3>
@@ -21,6 +24,15 @@ export default function ProjectCard({ title, description, technologies, link }: 
                 </a>
              </p>
             )}
+            <form action={deleteProject} className="mt-4">
+                <input type="hidden" name="projectId" value={id} />
+                <button
+                    type="submit"
+                    className="rounded bg-red-600 px-3 py-2 text-sm font-medium text-white hover:bg-red-700"
+                >
+                    Delete project
+                </button>
+            </form>
         </article>
     )
 }
